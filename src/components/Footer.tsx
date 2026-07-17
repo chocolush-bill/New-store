@@ -115,7 +115,7 @@ const Footer = () => {
               <li><a href={`https://wa.me/${wa}`} target="_blank" rel="noreferrer" className="hover:text-[#25D366] transition-colors">+{wa}</a></li>
               <li><a href={`mailto:${contactEmail}`} className="hover:text-[var(--accent)] transition-colors">{contactEmail}</a></li>
               <li><a href={igUrl} target="_blank" rel="noreferrer" className="hover:text-[var(--accent)] transition-colors">{igHandle}</a></li>
-              {freeDelivery && <li className="text-[var(--accent)] text-xs font-medium pt-1">🚚 Free delivery above ₹{freeDelivery}</li>}
+              
             </ul>
           </div>
         </div>
