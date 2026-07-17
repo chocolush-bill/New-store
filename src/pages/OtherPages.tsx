@@ -230,7 +230,7 @@ export const AboutPage = () => {
           href="' + getS('instagram_url') + '"
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2D1B14] via-[#4E342E] to-[#8B6B3F] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm tracking-wider"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2D1B14] via-[#4E342E] to-[#8B6B3F] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm tracking-wider"></a>
           <ExternalLink size={18} /> {INSTAGRAM_HANDLE} — Follow Us
         </a>
       </div>
