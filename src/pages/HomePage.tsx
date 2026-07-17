@@ -228,7 +228,7 @@ const HomePage = () => {
         : r
       ));
       setEditingReview(null);
-      toast.success('Review updated! Pending re-approval 🍫');
+      toast.success('Review updated!');
     } catch (e: any) {
       console.error('Edit error:', e);
       toast.error('Could not update: ' + (e?.message || 'Try again'));
