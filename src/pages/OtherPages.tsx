@@ -221,14 +221,19 @@ export const AboutPage = () => {
         </div>
       </div>
 
-      <a
-  href={getS("instagram_url") || "https://www.instagram.com/_chocolush._?igsh=NWM0NnJ3amhpYWFn"}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2D1B14] via-[#4E342E] to-[#8B6B3F] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm tracking-wider"
->
-  <ExternalLink size={18} /> {INSTAGRAM_HANDLE} — Follow Us
-</a>
+      {/* Instagram */}
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-3xl p-10 text-center mb-16">
+        <ExternalLink size={32} className="text-[var(--accent)] mx-auto mb-4" />
+        <h3 className="text-2xl font-bold text-[var(--text)] mb-2" style={{ fontFamily: 'Georgia, serif' }}>Follow Our Journey</h3>
+        <p className="text-[var(--text-2)] mb-6">Behind-the-scenes, new launches, and chocolate inspiration every day.</p>
+        <a
+          href="' + getS('instagram_url') + '"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2D1B14] via-[#4E342E] to-[#8B6B3F] text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl text-sm tracking-wider">
+          <ExternalLink size={18} /> {INSTAGRAM_HANDLE} — Follow Us
+        </a>
+      </div>
 
       {/* Values */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
