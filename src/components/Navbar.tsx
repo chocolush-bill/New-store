@@ -27,6 +27,19 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [topMessage, setTopMessage] = useState('');
   const [topBarDismissed, setTopBarDismissed] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+
+  useEffect(() => {
+  const close = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('[data-account-menu]')) {
+      setUserMenuOpen(false);
+    }
+  };
+
+  document.addEventListener('mousedown', close);
+  return () => document.removeEventListener('mousedown', close);
+}, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -153,7 +166,7 @@ const Navbar = () => {
 
               {/* Login / User — desktop only */}
              {user ? (
-                <div className="relative hidden md:block">
+                <div className="relative hidden md:block" data-account-menu>
                   <button
                     onClick={() => setUserMenuOpen(!userMenuOpen)}
                     className="flex items-center gap-1 text-xs tracking-wider uppercase text-[var(--accent)] border border-[var(--accent)]/40 hover:bg-[var(--accent)]/10 px-3 py-1.5 rounded-full transition-colors"
