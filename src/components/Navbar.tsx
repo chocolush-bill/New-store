@@ -152,18 +152,49 @@ const Navbar = () => {
               </Link>
 
               {/* Login / User — desktop only */}
-              {user ? (
-                <button onClick={handleSignOut}
-                  className="hidden md:flex items-center gap-1 text-xs tracking-wider uppercase text-[var(--accent)] border border-[var(--accent)]/40 hover:bg-[var(--accent)]/10 px-3 py-1.5 rounded-full transition-colors">
-                  <User size={14} /> Account
-                </button>
+             {user ? (
+                <div className="relative hidden md:block">
+                  <button
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className="flex items-center gap-1 text-xs tracking-wider uppercase text-[var(--accent)] border border-[var(--accent)]/40 hover:bg-[var(--accent)]/10 px-3 py-1.5 rounded-full transition-colors"
+                  >
+                    <User size={14} /> Account
+                  </button>
+                  <AnimatePresence>
+                    {userMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        className="absolute right-0 top-full mt-2 w-48 bg-[var(--surface)] border border-[var(--border)] rounded-2xl shadow-xl overflow-hidden z-50"
+                      >
+                        <Link to="/profile" onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-2 px-4 py-3 text-sm text-[var(--text)] hover:bg-[var(--surface-alt)] transition-colors">
+                          <User size={15}/> My Profile
+                        </Link>
+                        <Link to="/orders" onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-2 px-4 py-3 text-sm text-[var(--text)] hover:bg-[var(--surface-alt)] transition-colors">
+                          <ShoppingBag size={15}/> My Orders
+                        </Link>
+                        <Link to="/wishlist" onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-2 px-4 py-3 text-sm text-[var(--text)] hover:bg-[var(--surface-alt)] transition-colors">
+                          <Heart size={15}/> Wishlist
+                        </Link>
+                        <div className="border-t border-[var(--border)] mx-3"/>
+                        <button onClick={() => { setUserMenuOpen(false); handleSignOut(); }}
+                          className="w-full flex items-center gap-2 px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 transition-colors">
+                          <LogOut size={15}/> Sign Out
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               ) : (
                 <Link to="/login"
                   className="hidden md:flex text-xs tracking-wider uppercase text-[#FFFFFF] bg-[var(--accent-2)] hover:bg-[var(--accent-2-hover)] px-4 py-1.5 rounded-full transition-colors">
                   Login
                 </Link>
               )}
-
               {/* Hamburger */}
               <button onClick={() => setMobileOpen(v => !v)} aria-label="Menu"
                 className={`w-8 h-8 flex items-center justify-center lg:hidden ${iconColor} transition-colors`}>
